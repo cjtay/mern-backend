@@ -9,7 +9,7 @@ async function getCoordsForAddress(address) {
     );
 
     const data = response.data;
-    console.log('Google coord', data);
+
     if (!data || data.status === 'ZERO RESULTS') {
         throw new HttpError('Could not find location', 422);
     }

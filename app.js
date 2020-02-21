@@ -32,8 +32,15 @@ app.use((error, req, res, next) => {
 
 mongoose
     .connect(
-        `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASSWORD}@merncluster-cizau.mongodb.net/${process.env.DB_NAME}?retryWrites=true&w=majority`
+        `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASSWORD}@merncluster-cizau.mongodb.net/${process.env.DB_NAME}?retryWrites=true&w=majority`,
+        {
+            useNewUrlParser: true,
+            useCreateIndex: true,
+            useFindAndModify: false,
+            useUnifiedTopology: true
+        }
     )
+    .then(() => console.log('DB connection successful'))
     .then(() => {
         app.listen(5000);
     })
