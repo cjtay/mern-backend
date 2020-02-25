@@ -11,7 +11,6 @@ const getUsers = async (req, res, next) => {
         const error = new HttpError('System error in retrieving users', 500);
         return next(error);
     }
-
     res.status(201).json({
         users: users.map(user => user.toObject({ getters: true }))
     });
@@ -40,7 +39,6 @@ const signup = async (req, res, next) => {
     }
 
     if (existingUser) {
-        console.log(existingUser);
         const error = new HttpError(
             'User already exist, please login instead',
             422
@@ -59,6 +57,7 @@ const signup = async (req, res, next) => {
 
     try {
         await createdUser.save();
+        console.log('sign up successful');
     } catch (err) {
         const error = new HttpError('System error in creating user', 500);
         console.log(err);
