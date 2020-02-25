@@ -144,6 +144,7 @@ const deletePlace = async (req, res, next) => {
     const placeId = req.params.pid;
 
     let place;
+    console.log('hit backend delete');
     try {
         place = await Place.findById(placeId).populate('creator');
     } catch (err) {
