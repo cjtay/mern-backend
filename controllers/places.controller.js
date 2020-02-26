@@ -127,6 +127,12 @@ const updatePlace = async (req, res, next) => {
         return next(error);
     }
 
+    //req.userData.userId is from check-auth.js middleware
+    if (place.creator.toString() !== req.userData.userId) {
+        const error = new HttpError('You are not authorized to delete', 401);
+        return next(error);
+    }
+
     place.title = title;
     place.description = description;
 
@@ -154,6 +160,11 @@ const deletePlace = async (req, res, next) => {
 
     if (!place) {
         const error = new HttpError('Place not found', 404);
+        return next(error);
+    }
+
+    if (place.creator.id !== req.userData.userId) {
+        const error = new HttpError('You are not authorized to delete', 401);
         return next(error);
     }
 
