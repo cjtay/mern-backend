@@ -84,7 +84,7 @@ const signup = async (req, res, next) => {
                 userId: createdUser.id,
                 email: createdUser.email
             },
-            'mysupersecretkeyforgeneratingtoken',
+            process.env.JWT_KEY,
             { expiresIn: '1h' }
         );
     } catch (err) {
@@ -143,7 +143,7 @@ const login = async (req, res, next) => {
                 userId: existingUser.id,
                 email: existingUser.email
             },
-            'mysupersecretkeyforgeneratingtoken',
+            process.env.JWT_KEY,
             { expiresIn: '1h' }
         );
     } catch (err) {
