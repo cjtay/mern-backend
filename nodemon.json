@@ -1,0 +1,9 @@
+{
+    "env": {
+        "DB_USER": "cjtay",
+        "DB_PASSWORD": "Memdav021",
+        "DB_NAME": "mern",
+        "GOOGLE_API_KEY": "AIzaSyDjgJ_cw6tdXvvZooft-FsFEyAOS8GGjhs",
+        "JWT_KEY": "@m&fr7tafq&_M%by"
+    }
+}
